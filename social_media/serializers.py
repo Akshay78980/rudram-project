@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Post, Comment
-# from users.models import UserProfile
 from users.serializers import UserProfileSerializer
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -11,7 +10,6 @@ class CommentSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     comment_count = serializers.SerializerMethodField()
-    # author_detail = UserProfileSerializer(read_only=True)
 
     class Meta:
         model = Post
